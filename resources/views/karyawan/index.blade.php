@@ -25,8 +25,12 @@
 					<tr class="gradeX">
 						<td>{{ $karyawan->nik }}</td>
 						<td>{{ $karyawan->nama }}</td>
-						<td>{{ $karyawan->jenis_klmn }}</td>
-						<td>{{ $karyawan->jabatan }}</td>
+						<td>{{ $karyawan->StGender->deskripsi }}</td>
+						@if($karyawan->jabatan != NULL)
+						<td>{{ $karyawan->StJabatan->Deskripsi }}</td>
+						@else	
+						<td></td>	
+						@endif		
 						<td class="center">                              
 							<a href="karyawan/{{$karyawan->nik}}/show"><button class="btn btn-outline btn-info  dim" type="button"><i class="fa fa-user-circle"></i> </button></a>
 							<a href="karyawan/{{$karyawan->nik}}/edit"><button class="btn btn-outline btn-warning dim" type="button"><i class="fa fa-paste"></i> </button></a>

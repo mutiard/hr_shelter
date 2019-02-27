@@ -21,6 +21,7 @@ use App\StUnitBisnis;
 use App\StGolongan;
 use Carbon;
 use Image;
+use DB;
 use Illuminate\Support\Facades\Input;
 
 class KaryawanController extends Controller
@@ -28,6 +29,8 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawans = MdKaryawan::all();
+        // $karyawans = DB::table('md_karyawan')->join('st_gender','md_karyawan.jenis_klmn','=','st_gender.kode')->get();
+        // dd($karyawans);
         return view('karyawan.index', compact('karyawans'));
     }
 
@@ -181,15 +184,22 @@ class KaryawanController extends Controller
 
     public function update(Request $request, $id)
     {
+        $kar = MdKaryawan::where('nik','=',$id)->get();
+        foreach ($kar as $listkar){
+            $photo = $listkar->path_foto;
+        }
         $mytime = Carbon\Carbon::now();
         $waktu = $mytime->toDateTimeString();
         $waktu_array = explode(' ', $waktu);
         $now_date = $waktu_array[0];
-        if($request->hasFile('path_foto'))
+        if(Input::hasFile('path_foto'))
         {
-            $foto = $request->file('path_foto');
+            $foto = Input::file('path_foto');
             $nama = $foto->getClientOriginalName();
             $image = Image::make($foto)->resize(300,300)->save(public_path('/fotoprofil/'.$nama));
+        }
+        else{
+            $nama = $photo;
         }
         $this->validate($request,[
             'nik'=>'required',

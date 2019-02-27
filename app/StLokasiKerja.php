@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class StLokasiKerja extends Model
 {
     protected $table = 'st_lokasi_kerja';
+    protected $primaryKey = 'kode';
+    public $incrementing = false;
     protected $fillable = [
         'kode','deskripsi','klp_gaji','sd_int_cutoff','ed_int_cutoff','jeda_bln_gaji','entry_user','entry_date'
     ];

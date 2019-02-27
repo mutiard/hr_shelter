@@ -50,11 +50,11 @@
 			</div>
 			<div class="form-group"><label class="col-sm-2 control-label">Agama</label>
 				<div class="col-sm-10"><select class="form-control m-b" name="agama">
+					<option value="">Pilih Agama</option>
 					@foreach($agamas as $agama)
 					@if($karyawan->agama == $agama->kode)
 					<option value="{{ $karyawan->agama }}" selected>{{$agama->deskripsi}}</option>
 					@else
-					<option value="">Pilih Agama</option>
 					<option value="{{ $agama->kode }}">{{$agama->deskripsi}}</option>
 					@endif
 					@endforeach
@@ -63,11 +63,11 @@
 		</div>
 		<div class="form-group"><label class="col-sm-2 control-label">Warga Negara</label>
 			<div class="col-sm-10"><select class="form-control m-b" name="warga_negara">
+				<option value="">Pilih Warga Negara</option>
 				@foreach($wns as $wn)
 				@if($karyawan->warga_negara == $wn->kode)
 				<option value="{{ $karyawan->warga_negara }}" selected>{{$wn->deskripsi}}</option>
 				@else
-				<option value="">Pilih Warga Negara</option>
 				<option value="{{ $wn->kode }}">{{$wn->deskripsi}}</option>
 				@endif
 				@endforeach
@@ -82,6 +82,7 @@
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Status Kawin</label>
 		<div class="col-sm-10"><select class="form-control m-b" name="status_kwn">
+			<option>Pilih Status Kawin</option>
 			@foreach($kawins as $kawin)
 			@if($karyawan->status_kwn == $kawin->kode)
 			<option value="{{ $karyawan->status_kwn }}" selected>{{$kawin->deskripsi}}</option>
@@ -103,11 +104,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Departemen</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="dept">
+		<option value="">Pilih Departemen</option>
 		@foreach($depts as $dept)
 		@if($karyawan->dept == $dept->kode)
 		<option value="{{ $karyawan->dept }}" selected>{{$dept->deskripsi}}</option>
 		@else
-		<option value="">Pilih Departemen</option>
 		<option value="{{ $dept->kode }}">{{$dept->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -116,11 +117,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Jabatan</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="jabatan">
+		<option value="">Pilih Jabatan</option>
 		@foreach($jabatans as $jabatan)
 		@if($karyawan->jabatan == $jabatan->kode)
 		<option value="{{ $karyawan->jabatan }}" selected>{{$jabatan->Deskripsi}}</option>
 		@else
-		<option value="">Pilih Jabatan</option>
 		<option value="{{ $jabatan->kode }}">{{$jabatan->Deskripsi}}</option>
 		@endif
 		@endforeach
@@ -129,11 +130,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Karyawan</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="status_karyawan">
+		<option value="">Pilih Status Karyawan</option>
 		@foreach($karys as $kary)
 		@if($karyawan->status_karyawan == $kary->kode)
 		<option value="{{ $karyawan->status_karyawan }}" selected>{{$kary->deskripsi}}</option>
 		@else
-		<option value="">Pilih Status Karyawan</option>
 		<option value="{{ $kary->kode }}">{{$kary->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -142,11 +143,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Keluarga</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="status_keluarga">
+		<option value="">Pilih Status Keluarga</option>
 		@foreach($keluargas as $keluarga)
 		@if($karyawan->status_keluarga == $keluarga->kode)
 		<option value="{{ $karyawan->status_keluarga }}" selected>{{$keluarga->deskripsi}}</option>
 		@else
-		<option value="">Pilih Status Keluarga</option>
 		<option value="{{ $keluarga->kode }}">{{$keluarga->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -170,11 +171,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Staff</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="id_staff">
+		<option value="">Pilih Status Staff</option>
 		@foreach($staffs as $staff)
 		@if($karyawan->id_staff == $staff->kode)
 		<option value="{{ $karyawan->id_staff }}" selected>{{$staff->deskripsi}}</option>
 		@else
-		<option value="">Pilih Status Staff</option>
 		<option value="{{ $staff->kode }}">{{$staff->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -183,11 +184,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Group</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="id_group">
+		<option value="">Pilih Status Group</option>
 		@foreach($groups as $group)
 		@if($karyawan->id_group == $group->kode)
 		<option value="{{ $karyawan->id_group }}" selected>{{$group->deskripsi}}</option>
 		@else
-		<option value="">Pilih Status Group</option>
 		<option value="{{ $group->kode }}">{{$group->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -199,11 +200,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Shift</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="id_shift">
+		<option value="">Pilih Status Shift</option>
 		@foreach($shifts as $shift)
 		@if($karyawan->id_shift == $shift->kode)
 		<option value="{{ $karyawan->id_shift }}" selected>{{$shift->deskripsi}}</option>
 		@else
-		<option value="">Pilih Status Shift</option>
 		<option value="{{ $shift->kode }}">{{$shift->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -242,11 +243,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Lokasi Kerja</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="lokasi_kerja">
+		<option value="">Pilih Lokasi Kerja</option>
 		@foreach($lokasis as $lokasi)
 		@if($karyawan->lokasi_kerja == $lokasi->kode)
 		<option value="{{ $karyawan->lokasi_kerja }}" selected>{{$lokasi->deskripsi}}</option>
 		@else
-		<option value="">Pilih Lokasi Kerja</option>
 		<option value="{{ $lokasi->kode }}">{{$lokasi->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -270,11 +271,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Pendidikan</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="pendidikan">
+		<option value="">Pilih Tingkat Pendidikan</option>
 		@foreach($pendidikans as $pendidikan)
 		@if($karyawan->pendidikan == $pendidikan->kode)
 		<option value="{{ $karyawan->pendidikan }}" selected>{{$pendidikan->deskripsi}}</option>
 		@else
-		<option value="">Pilih Tingkat Pendidikan</option>
 		<option value="{{ $pendidikan->kode }}">{{$pendidikan->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -322,11 +323,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Unit Bisnis</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="kode_unit_bisnis">
+		<option value="">Pilih Unit Bisnis</option>
 		@foreach($uss as $us)
 		@if ($karyawan->kode_unit_bisnis == $us->kode)
 		<option value="{{ $karyawan->kode_unit_bisnis }}" selected>{{$us->deskripsi}}</option>
 		@else
-		<option value="">Pilih Unit Bisnis</option>
 		<option value="{{ $us->kode }}">{{$us->deskripsi}}</option>
 		@endif
 		@endforeach
@@ -350,11 +351,11 @@
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Golongan</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="kode_golongan">
+		<option value="">Pilih Status Golongan</option>
 		@foreach($gols as $gol)
 		@if($karyawan->kode_golongan == $gol->kode)
 		<option value="{{ $karyawan->kode_golongan }}" selected>{{$gol->deskripsi}}</option>
 		@else
-		<option value="">Pilih Status Golongan</option>
 		<option value="{{ $gol->kode }}">{{$gol->deskripsi}}</option>
 		@endif
 		@endforeach

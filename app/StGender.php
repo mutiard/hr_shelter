@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class StGender extends Model
 {
     protected $table = 'st_gender';
+    protected $primaryKey = 'kode';
+    public $incrementing = false;
     protected $fillable = [
         'kode','deskripsi','entry_user','entry_date'
     ];

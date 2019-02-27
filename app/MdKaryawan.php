@@ -14,76 +14,76 @@ class MdKaryawan extends Model
 
     public function StAgama()
     {
-    	return $this->belongsTo('App\StAgama');
+    	return $this->belongsTo('App\StAgama','agama');
     }
 
     public function StGender()
     {
-    	return $this->belongsTo('App\StGender');
+    	return $this->belongsTo('App\StGender', 'jenis_klmn');
     }
 
     public function StKawin()
     {
-    	return $this->belongsTo('App\StKawin');
+    	return $this->belongsTo('App\StKawin', 'status_kwn');
     }
 
     public function StWargaNegara()
     {
-    	return $this->belongsTo('App\StWargaNegara');
+    	return $this->belongsTo('App\StWargaNegara', 'warga_negara');
     }
 
     public function StJabatan()
     {
-    	return $this->belongsTo('App\StJabatan');
+    	return $this->belongsTo('App\StJabatan', 'jabatan');
     }
 
     public function StDept()
     {
-    	return $this->belongsTo('App\StDept');
+    	return $this->belongsTo('App\StDept', 'dept');
     }
 
     public function StKaryawan()
     {
-    	return $this->belongsTo('App\StKaryawan');
+    	return $this->belongsTo('App\StKaryawan','status_karyawan');
     }
 
     public function StKeluarga()
     {
-    	return $this->belongsTo('App\StKeluarga');
+    	return $this->belongsTo('App\StKeluarga','status_keluarga');
     }
 
     public function StStaff()
     {
-    	return $this->belongsTo('App\StStaff');
+    	return $this->belongsTo('App\StStaff','id_staff');
     }
 
     public function StGroup()
     {
-    	return $this->belongsTo('App\StGroup');
+    	return $this->belongsTo('App\StGroup', 'id_group');
     }
 
     public function StShift()
     {
-        return $this->belongsTo('App\StShift');
+        return $this->belongsTo('App\StShift', 'id_shift');
     }
 
     public function StPendidikan()
     {
-        return $this->belongsTo('App\StPendidikan');
+        return $this->belongsTo('App\StPendidikan', 'pendidikan');
     }
 
     public function StLokasiKerja()
     {
-        return $this->belongsTo('App\StLokasiKerja');
+        return $this->belongsTo('App\StLokasiKerja', 'lokasi_kerja');
     }
 
     public function StUnitBisnis()
     {
-        return $this->belongsTo('App\StUnitBisnis');
+        return $this->belongsTo('App\StUnitBisnis', 'kode_unit_bisnis');
     }
 
     public function StGolongan()
     {
-        return $this->belongsTo('App\StGolongan');
+        return $this->belongsTo('App\StGolongan', 'kode_golongan');
     }
 }
