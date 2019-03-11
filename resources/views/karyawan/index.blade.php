@@ -3,7 +3,7 @@
 @section('contents')
 <div class="ibox float-e-margins">
 	<div class="ibox-title">
-		<h5>Data Karyawan</h5>
+		<h5>Tabel Data Karyawan</h5>
 	</div>
 	<div class="ibox-content">
 		<a href="/karyawan/create">

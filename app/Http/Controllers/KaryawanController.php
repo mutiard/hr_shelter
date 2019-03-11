@@ -22,6 +22,7 @@ use App\StGolongan;
 use Carbon;
 use Image;
 use DB;
+use App\PengalamanKerja;
 use Illuminate\Support\Facades\Input;
 
 class KaryawanController extends Controller
@@ -29,8 +30,6 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawans = MdKaryawan::all();
-        // $karyawans = DB::table('md_karyawan')->join('st_gender','md_karyawan.jenis_klmn','=','st_gender.kode')->get();
-        // dd($karyawans);
         return view('karyawan.index', compact('karyawans'));
     }
 
@@ -151,19 +150,34 @@ class KaryawanController extends Controller
             $is_saved = Image::make($profpic)->resize(300,300)->save(public_path('/fotoprofil/'.$karyawans->path_foto));
         }
         $karyawans->save();
+
+        $nama_prshaan = Input::get('nama_prshaan');
+        $jbtn = Input::get('jbtn');
+        $sdate = Input::get('sdate');
+        $edate = Input::get('edate');
+        foreach($nama_prshaan as $key => $value){
+            $pengalaman = New PengalamanKerja();
+            $pengalaman->nik = $karyawans->nik;
+            $pengalaman->nama_prshaan = $nama_prshaan[$key];
+            $pengalaman->jabatan = $jbtn[$key];
+            $pengalaman->sdate = $sdate[$key];
+            $pengalaman->edate = $edate[$key];
+            $pengalaman->save();
+        }
         return redirect('/')->with('info','Data Karyawan Berhasil Ditambahkan!');
     }
 
     public function show($id)
     {
         $karyawans = MdKaryawan::where('nik','=',$id)->get();
-        // dd($karyawans);
-        return view('karyawan.show', compact('karyawans'));
+        $kerjas = PengalamanKerja::where('nik','=',$id)->get();
+        return view('karyawan.show', compact('karyawans','kerjas'));
     }
 
     public function edit($id)
     {
         $karyawans = MdKaryawan::where('nik','=',$id)->get();
+        $kerjas = PengalamanKerja::where('nik','=',$id)->get();
         $agamas = StAgama::all();
         $genders = StGender::all();
         $kawins = StKawin::all();
@@ -179,7 +193,7 @@ class KaryawanController extends Controller
         $lokasis = StLokasiKerja::all();
         $uss = StUnitBisnis::all();
         $gols = StGolongan::all();
-        return view('karyawan.edit', compact('karyawans','agamas','genders','kawins','wns','jabatans','depts','karys','keluargas','staffs','groups','shifts','pendidikans','lokasis','uss','gols'));
+        return view('karyawan.edit', compact('karyawans','agamas','genders','kawins','wns','jabatans','depts','karys','keluargas','staffs','groups','shifts','pendidikans','lokasis','uss','gols','kerjas'));
     }
 
     public function update(Request $request, $id)
@@ -187,6 +201,7 @@ class KaryawanController extends Controller
         $kar = MdKaryawan::where('nik','=',$id)->get();
         foreach ($kar as $listkar){
             $photo = $listkar->path_foto;
+            $nik = $listkar->nik;
         }
         $mytime = Carbon\Carbon::now();
         $waktu = $mytime->toDateTimeString();
@@ -287,13 +302,31 @@ class KaryawanController extends Controller
             'path_foto'=>$nama
         );
 MdKaryawan::where('nik',$id)->update($karyawans);
+$nama_prshaan1 = PengalamanKerja::where('nik',$nik)->delete();
+$nama_prshaan = Input::get('nama_prshaan');
+$jbtn = Input::get('jbtn');
+$sdate = Input::get('sdate');
+$edate = Input::get('edate');
+if(isset($nama_prshaan)){
+    foreach($nama_prshaan as $key => $value){
+        $pengalaman = New PengalamanKerja();
+        $pengalaman->nik = $nik;
+        $pengalaman->nama_prshaan = $nama_prshaan[$key];
+        $pengalaman->jabatan = $jbtn[$key];
+        $pengalaman->sdate = $sdate[$key];
+        $pengalaman->edate = $edate[$key];
+        $pengalaman->save();
+    }
+}
 return redirect('/')->with('info','Data Karyawan berhasil diubah');
 }
 
 public function destroy($id)
 {
     $karyawans = MdKaryawan::where('nik','=',$id);
+    $kerjas = PengalamanKerja::where('nik','=',$id);
     $karyawans->delete();
+    $kerjas->delete();
     return redirect('/')->with('info','Data Karyawan berhasil dihapus');
 }
 }

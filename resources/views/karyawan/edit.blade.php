@@ -377,6 +377,52 @@
 <div class="form-group"><label class="col-sm-2 control-label">BPJS Sehat Karyawan</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="bpjs_sehat_karyawan" value="{{ $karyawan->bpjs_sehat_karyawan }}" placeholder="Masukkan BPJS Sehat Karyawan"></div>
 </div>
+<div class="form-group" id="addmore">
+	<label class="col-sm-2 control-label">Pengalaman Kerja<br>
+		<div id="add" class="label label-primary" style="margin-top: 10px">
+			<i class="fa fa-plus-circle">Tambahkah Pengalaman Kerja</i>
+		</div>
+	</label>
+	<div class="col-sm-2">
+		@if(!$kerjas->isEmpty())
+		@foreach($kerjas as $kerja)
+		<input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan" value="{{$kerja->nama_prshaan}}">
+		@endforeach
+		@else
+		<input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan">
+		@endif
+	</div>
+	<div class="col-sm-2">
+		@if(!$kerjas->isEmpty())
+		@foreach($kerjas as $kerja)
+		<input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan" value="{{$kerja->jabatan}}">
+		@endforeach
+		@else
+		<input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan">
+		@endif
+	</div>
+	<label class="col-sm-1 control-label">Tanggal Mulai</label>
+	<div class="col-sm-2">
+		@if(!$kerjas->isEmpty())
+		@foreach($kerjas as $kerja)
+		<input type="date" class="form-control" name="sdate[]" value="{{$kerja->sdate}}">
+		@endforeach
+		@else
+		<input type="date" class="form-control" name="sdate[]">
+		@endif
+	</div>
+	<label class="col-sm-1 control-label">Tanggal Berakhir</label>
+	<div class="col-sm-2">
+		@if(!$kerjas->isEmpty())
+		@foreach($kerjas as $kerja)
+		<input type="date" class="form-control" name="edate[]" value="{{$kerja->edate}}">
+		@endforeach
+		@else
+		<input type="date" class="form-control" name="edate[]">
+		@endif
+	</div>
+	<div class="col-sm-offset-2 col-sm-10"></div>
+</div>
 <div class="form-group"><label class="col-sm-2 control-label">Upload Foto</label>
 	<div class="fileinput fileinput-new" data-provides="fileinput">
 		<span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span>
@@ -404,4 +450,11 @@
 </form>
 </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$('#add').click(function(){
+		$('#addmore').append('<label class="col-sm-2 control-label"></label><div class="col-sm-2"><input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan"></div><div class="col-sm-2"><input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan"></div><label class="col-sm-1 control-label"></label><div class="col-sm-2"><input type="date" class="form-control" name="sdate[]"></div><label class="col-sm-1 control-label"></label><div class="col-sm-2"><input type="date" class="form-control" name="edate[]"></div>');
+	});
+</script>
 @endsection
