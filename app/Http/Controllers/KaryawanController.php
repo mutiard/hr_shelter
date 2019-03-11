@@ -171,7 +171,7 @@ class KaryawanController extends Controller
     {
         $karyawans = MdKaryawan::where('nik','=',$id)->get();
         $kerjas = PengalamanKerja::where('nik','=',$id)->get();
-        return view('karyawan.show', compact('karyawans','kerjas'));
+        return view('karyawan.show2', compact('karyawans','kerjas'));
     }
 
     public function edit($id)

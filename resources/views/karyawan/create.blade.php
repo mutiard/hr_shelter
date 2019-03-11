@@ -242,10 +242,10 @@
 	<div class="col-sm-10"><input type="number" class="form-control" name="berat_badan" placeholder="Masukkan Berat Badan"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Ukuran Baju</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="ukuran_baju" placeholder="Masukkan Ukuran Baju"></div>
+	<div class="col-sm-10"><input type="text" class="form-control" name="ukuran_baju" placeholder="Masukkan Ukuran Baju"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Ukuran Celana</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="ukuran_celana" placeholder="Masukkan Ukuran Celana"></div>
+	<div class="col-sm-10"><input type="text" class="form-control" name="ukuran_celana" placeholder="Masukkan Ukuran Celana"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Ukuran Sepatu</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="ukuran_sepatu" placeholder="Masukkan Ukuran Sepatu"></div>
