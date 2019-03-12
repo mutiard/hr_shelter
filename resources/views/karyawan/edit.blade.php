@@ -82,7 +82,7 @@
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Status Kawin</label>
 		<div class="col-sm-10"><select class="form-control m-b" name="status_kwn">
-			<option>Pilih Status Kawin</option>
+			<option value="">Pilih Status Kawin</option>
 			@foreach($kawins as $kawin)
 			@if($karyawan->status_kwn == $kawin->kode)
 			<option value="{{ $karyawan->status_kwn }}" selected>{{$kawin->deskripsi}}</option>
@@ -269,18 +269,8 @@
 <div class="form-group"><label class="col-sm-2 control-label">PRD Gaji</label>
 	<div class="col-sm-10"><input type="text" class="form-control" name="prd_gaji" value="{{ $karyawan->prd_gaji }}" placeholder="Masukkan PRD Gaji"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Pendidikan</label>
-	<div class="col-sm-10"><select class="form-control m-b" name="pendidikan">
-		<option value="">Pilih Tingkat Pendidikan</option>
-		@foreach($pendidikans as $pendidikan)
-		@if($karyawan->pendidikan == $pendidikan->kode)
-		<option value="{{ $karyawan->pendidikan }}" selected>{{$pendidikan->deskripsi}}</option>
-		@else
-		<option value="{{ $pendidikan->kode }}">{{$pendidikan->deskripsi}}</option>
-		@endif
-		@endforeach
-	</select>
-</div>
+<div class="form-group"><label class="col-sm-2 control-label">Pendidikan Terakhir</label>
+	<div class="col-sm-10"><input type="text" class="form-control" name="pendidikan" value="{{ $karyawan->pendidikan }}" placeholder="Masukkan Pendidikan Terakhir"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Email 1</label>
 	<div class="col-sm-10"><input type="text" class="form-control" name="email_1" value="{{ $karyawan->email_1 }}" placeholder="Masukkan Email 1"></div>
@@ -377,51 +367,102 @@
 <div class="form-group"><label class="col-sm-2 control-label">BPJS Sehat Karyawan</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="bpjs_sehat_karyawan" value="{{ $karyawan->bpjs_sehat_karyawan }}" placeholder="Masukkan BPJS Sehat Karyawan"></div>
 </div>
-<div class="form-group" id="addmore">
-	<label class="col-sm-2 control-label">Pengalaman Kerja<br>
-		<div id="add" class="label label-primary" style="margin-top: 10px">
-			<i class="fa fa-plus-circle">Tambahkah Pengalaman Kerja</i>
-		</div>
-	</label>
-	<div class="col-sm-2">
+<div class="form-group">
+	<label><i class="fa fa-send"></i>&ensp;Pengalaman Kerja<br></label>
+	<div class="col-sm-12" id="addmore">
+	<div id="add" class="label label-primary" style="margin-top: 10px">
+		<i class="fa fa-plus-circle">Tambahkah Pengalaman Kerja</i>
+	</div>
+	@foreach($kerjas as $kerja)
+	<div class="col-sm-3">
+		<label>Tanggal Mulai</label>
 		@if(!$kerjas->isEmpty())
-		@foreach($kerjas as $kerja)
 		<input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan" value="{{$kerja->nama_prshaan}}">
-		@endforeach
 		@else
 		<input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan">
 		@endif
 	</div>
-	<div class="col-sm-2">
+	<div class="col-sm-3">
+		<label>Jabatan</label>
 		@if(!$kerjas->isEmpty())
-		@foreach($kerjas as $kerja)
 		<input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan" value="{{$kerja->jabatan}}">
-		@endforeach
 		@else
 		<input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan">
 		@endif
 	</div>
-	<label class="col-sm-1 control-label">Tanggal Mulai</label>
 	<div class="col-sm-2">
+		<label>Tanggal Mulai</label>
 		@if(!$kerjas->isEmpty())
-		@foreach($kerjas as $kerja)
 		<input type="date" class="form-control" name="sdate[]" value="{{$kerja->sdate}}">
-		@endforeach
 		@else
 		<input type="date" class="form-control" name="sdate[]">
 		@endif
 	</div>
-	<label class="col-sm-1 control-label">Tanggal Berakhir</label>
 	<div class="col-sm-2">
+		<label>Tanggal Berakhir</label>
 		@if(!$kerjas->isEmpty())
-		@foreach($kerjas as $kerja)
 		<input type="date" class="form-control" name="edate[]" value="{{$kerja->edate}}">
-		@endforeach
 		@else
 		<input type="date" class="form-control" name="edate[]">
 		@endif
 	</div>
 	<div class="col-sm-offset-2 col-sm-10"></div>
+	@endforeach
+</div>
+</div>
+<br>
+<div class="form-group">
+	<label><i class="fa fa-book"></i>&ensp;Riwayat Pendidikan</label>
+</div>
+<div class="col-sm-12" id="addmore2">
+	<div id="add2" class="label label-primary" style="margin-top: 10px">
+		<i class="fa fa-plus-circle">Tambahkan Riwayat Pendidikan</i>
+	</div>
+	@foreach($rps as $rp)
+	<div class="col-sm-3">
+		<label>Pendidikan</label>
+		<select class="form-control m-b" name="st_pendidikan_kode[]">
+			<option value="">Pilih Pendidikan</option>
+			@foreach($pendidikans as $pendidikan)
+			@if ($rp->st_pendidikan_kode == $pendidikan->kode)
+			<option value="{{ $rp->st_pendidikan_kode }}" selected>{{$pendidikan->deskripsi}}</option>
+			@else
+			<option value="{{ $pendidikan->kode }}">{{$pendidikan->deskripsi}}</option>
+			@endif
+			@endforeach
+		</select>
+	</div>
+	<div class="col-sm-3">
+		<label>Perguruan Tinggi</label>
+		<select class="form-control m-b" name="st_perguruantinggi_kode[]">
+			<option value="">Pilih Perguruan Tinggi</option>
+			@foreach($pts as $pt)
+			@if ($rp->st_perguruantinggi_kode == $pt->kode)
+			<option value="{{ $rp->st_perguruantinggi_kode }}" selected>{{$pt->deskripsi}}</option>
+			@else
+			<option value="{{ $pt->kode }}">{{$pt->deskripsi}}</option>
+			@endif
+			@endforeach
+		</select>
+	</div>
+	<div class="col-sm-2">
+		<label>Tahun Masuk</label>
+		@if(!$rps->isEmpty())
+		<input type="number" class="form-control" name="thn_masuk[]" placeholder="Tahun Masuk" value="{{$rp->thn_masuk}}">
+		@else
+		<input type="number" class="form-control" name="thn_masuk[]" placeholder="Tahun Masuk">
+		@endif
+	</div>
+	<div class="col-sm-2">
+		<label>Tahun Keluar</label>
+		@if(!$rps->isEmpty())
+		<input type="number" class="form-control" name="thn_keluar[]" placeholder="Tahun Keluar" value="{{$rp->thn_keluar}}">
+		@else
+		<input type="number" class="form-control" name="thn_keluar[]" placeholder="Tahun Keluar">
+		@endif
+	</div>
+	<div class="col-sm-offset-2 col-sm-10"></div>
+	@endforeach
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Upload Foto</label>
 	<div class="fileinput fileinput-new" data-provides="fileinput">
@@ -454,7 +495,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$('#add').click(function(){
-		$('#addmore').append('<label class="col-sm-2 control-label"></label><div class="col-sm-2"><input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan"></div><div class="col-sm-2"><input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan"></div><label class="col-sm-1 control-label"></label><div class="col-sm-2"><input type="date" class="form-control" name="sdate[]"></div><label class="col-sm-1 control-label"></label><div class="col-sm-2"><input type="date" class="form-control" name="edate[]"></div>');
+		$('#addmore').append('<div class="col-sm-12"><div class="col-sm-3"><input type="text" class="form-control" name="nama_prshaan[]" placeholder="Nama Perusahaan"></div><div class="col-sm-3"><input type="text" class="form-control" name="jbtn[]" placeholder="Jabatan"></div><div class="col-sm-2"><input type="date" class="form-control" name="sdate[]"></div><div class="col-sm-2"><input type="date" class="form-control" name="edate[]"></div></div>');
+	});
+
+	$('#add2').click(function(){
+		$('#addmore2').append('<div class="col-sm-12"><div class="col-sm-3"><select class="form-control m-b" name="st_pendidikan_kode[]"><option value="">Pilih Pendidikan</option>@foreach($pendidikans as $pendidikan)<option value="{{ $pendidikan->kode }}">{{$pendidikan->deskripsi}}</option>@endforeach</select></div><div class="col-sm-3"><select class="form-control m-b" name="st_perguruantinggi_kode[]"><option value="">Pilih Perguruan Tinggi</option>@foreach($pts as $pt)<option value="{{ $pt->kode }}">{{$pt->deskripsi}}</option>@endforeach</select></div><div class="col-sm-2"><input type="text" class="form-control" name="thn_masuk[]" placeholder="Tahun Masuk"></div><div class="col-sm-2"><input type="text" class="form-control" name="thn_keluar[]" placeholder="Tahun Keluar"></div></div>');
 	});
 </script>
 @endsection

@@ -20,7 +20,7 @@
         @include('layouts.navbar')
       </div>
       <div class="row border-bottom white-bg dashboard-header">
-        <h2>HR Shelter</h2>
+        <h2>ISC HRIS</h2>
         <ol class="breadcrumb">
           <li>
             <a href="index.html">Home</a>

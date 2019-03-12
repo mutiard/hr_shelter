@@ -91,4 +91,9 @@ class MdKaryawan extends Model
     {
         return $this->belongsTo('App\PengalamanKerja');
     }
+
+    public function RiwayatPendidikan()
+    {
+        return $this->belongsTo('App\RiwayatPendidikan');
+    }
 }

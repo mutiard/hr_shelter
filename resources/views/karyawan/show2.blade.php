@@ -15,7 +15,7 @@
 					@if($karyawan->jabatan != NULL)
 					<div class="m-t-xs font-bold">{{ $karyawan->StJabatan->Deskripsi }}</div>
 					@else
-					<br>
+					<img alt="image" class="img-circle m-t-xs img-responsive" src="{{asset('/fotoprofil/admin.jpg')}}" style="width: 150px">
 					@endif
 				</div>
 			</div>
@@ -49,6 +49,7 @@
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#tab-1">Detail Karyawan</a></li>
 				<li class=""><a data-toggle="tab" href="#tab-2">Pengalaman Kerja</a></li>
+				<li class=""><a data-toggle="tab" href="#tab-3">Riwayat Pendidikan</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="tab-1" class="tab-pane active">
@@ -184,7 +185,7 @@
 						<h3><i class="fa fa-send"></i> Pengalaman Kerja</h3>
 						<div class="hr-line-dashed"></div>
 						@if($kerjas->isEmpty())
-						<p>Karyawan belum punya pengalaman kerja</p>
+						<p>Karyawan belum mengisi pengalaman kerja</p>
 						@else
 						<table class="table table-bordered">
 							<thead>
@@ -205,6 +206,39 @@
 									<td>{{ $kerja->jabatan }}</td>
 									<td>{{ $kerja->sdate }}</td>
 									<td>{{ $kerja->edate }}</td>
+								</tr>
+								@endforeach
+							</tbody>
+						</table>
+						@endif
+					</div>
+				</div>
+				<div id="tab-3" class="tab-pane">
+					<div class="panel-body">
+						<h3><i class="fa fa-book"></i> Riwayat Pendidikan</h3>
+						<div class="hr-line-dashed"></div>
+						@if($rps->isEmpty())
+						<p>Karyawan belum mengisi riwayat pendidikan</p>
+						@else
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Pendidikan</th>
+									<th>Perguruan Tinggi</th>
+									<th>Tahun Masuk</th>
+									<th>Tahun Keluar</th>
+								</tr>
+							</thead>
+							<?php $i=1; ?>
+							<tbody>
+								@foreach($rps as $rp)
+								<tr>
+									<td>{{ $i++ }}</td>
+									<td>{{ $rp->StPendidikan->deskripsi }}</td>
+									<td>{{ $rp->PerguruanTinggi->deskripsi }}</td>
+									<td>{{ $rp->thn_masuk }}</td>
+									<td>{{ $rp->thn_keluar }}</td>
 								</tr>
 								@endforeach
 							</tbody>

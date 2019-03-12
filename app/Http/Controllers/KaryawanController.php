@@ -19,6 +19,8 @@ use App\StPendidikan;
 use App\StLokasiKerja;
 use App\StUnitBisnis;
 use App\StGolongan;
+use App\PerguruanTinggi;
+use App\RiwayatPendidikan;
 use Carbon;
 use Image;
 use DB;
@@ -50,7 +52,8 @@ class KaryawanController extends Controller
         $lokasis = StLokasiKerja::all();
         $uss = StUnitBisnis::all();
         $gols = StGolongan::all();
-        return view('karyawan.create', compact('agamas','genders','kawins','wns','jabatans','depts','karys','keluargas','staffs','groups','shifts','pendidikans','lokasis','uss','gols'));
+        $pts = PerguruanTinggi::all();
+        return view('karyawan.create', compact('agamas','genders','kawins','wns','jabatans','depts','karys','keluargas','staffs','groups','shifts','pendidikans','lokasis','uss','gols','pts'));
     }
 
     public function store(Request $request)
@@ -111,6 +114,7 @@ class KaryawanController extends Controller
         $karyawans->no_sim_1 = $request->input('no_sim_1');
         $karyawans->tipe_sim_2 = $request->input('tipe_sim_2');
         $karyawans->no_sim_2 = $request->input('no_sim_2');
+        $karyawans->prd_gaji = $request->input('prd_gaji');
         $karyawans->pendidikan = $request->input('pendidikan');
         $karyawans->email_1 = $request->input('email_1');
         $karyawans->email_2 = $request->input('email_2');
@@ -164,6 +168,20 @@ class KaryawanController extends Controller
             $pengalaman->edate = $edate[$key];
             $pengalaman->save();
         }
+
+        $st_pendidikan_kode = Input::get('st_pendidikan_kode');
+        $st_perguruantinggi_kode = Input::get('st_perguruantinggi_kode');
+        $thn_masuk = Input::get('thn_masuk');
+        $thn_keluar = Input::get('thn_keluar');
+        foreach($st_pendidikan_kode as $key => $value){
+            $rp = New RiwayatPendidikan();
+            $rp->md_karyawan_nik = $karyawans->nik;
+            $rp->st_pendidikan_kode = $st_pendidikan_kode[$key];
+            $rp->st_perguruantinggi_kode = $st_perguruantinggi_kode[$key];
+            $rp->thn_masuk = $thn_masuk[$key];
+            $rp->thn_keluar = $thn_keluar[$key];
+            $rp->save();
+        }
         return redirect('/')->with('info','Data Karyawan Berhasil Ditambahkan!');
     }
 
@@ -171,7 +189,8 @@ class KaryawanController extends Controller
     {
         $karyawans = MdKaryawan::where('nik','=',$id)->get();
         $kerjas = PengalamanKerja::where('nik','=',$id)->get();
-        return view('karyawan.show2', compact('karyawans','kerjas'));
+        $rps = RiwayatPendidikan::where('md_karyawan_nik','=',$id)->get();
+        return view('karyawan.show2', compact('karyawans','kerjas','rps'));
     }
 
     public function edit($id)
@@ -193,7 +212,9 @@ class KaryawanController extends Controller
         $lokasis = StLokasiKerja::all();
         $uss = StUnitBisnis::all();
         $gols = StGolongan::all();
-        return view('karyawan.edit', compact('karyawans','agamas','genders','kawins','wns','jabatans','depts','karys','keluargas','staffs','groups','shifts','pendidikans','lokasis','uss','gols','kerjas'));
+        $rps = RiwayatPendidikan::where('md_karyawan_nik','=',$id)->get();
+        $pts = PerguruanTinggi::all();
+        return view('karyawan.edit', compact('karyawans','agamas','genders','kawins','wns','jabatans','depts','karys','keluargas','staffs','groups','shifts','pendidikans','lokasis','uss','gols','kerjas','rps','pts'));
     }
 
     public function update(Request $request, $id)
@@ -271,6 +292,7 @@ class KaryawanController extends Controller
             'no_sim_1'=>$request->input('no_sim_1'),
             'tipe_sim_2'=>$request->input('tipe_sim_2'),
             'no_sim_2'=>$request->input('no_sim_2'),
+            'prd_gaji'=>$request->input('prd_gaji'),
             'pendidikan'=>$request->input('pendidikan'),
             'email_1'=>$request->input('email_1'),
             'email_2'=>$request->input('email_2'),
@@ -318,6 +340,23 @@ if(isset($nama_prshaan)){
         $pengalaman->save();
     }
 }
+
+$st_pendidikan_kode1 = RiwayatPendidikan::where('md_karyawan_nik',$nik)->delete();
+$st_pendidikan_kode = Input::get('st_pendidikan_kode');
+$st_perguruantinggi_kode = Input::get('st_perguruantinggi_kode');
+$thn_masuk = Input::get('thn_masuk');
+$thn_keluar = Input::get('thn_keluar');
+if(isset($st_pendidikan_kode)){
+    foreach($st_pendidikan_kode as $key => $value){
+        $rp = New RiwayatPendidikan();
+        $rp->md_karyawan_nik = $nik;
+        $rp->st_pendidikan_kode = $st_pendidikan_kode[$key];
+        $rp->st_perguruantinggi_kode = $st_perguruantinggi_kode[$key];
+        $rp->thn_masuk = $thn_masuk[$key];
+        $rp->thn_keluar = $thn_keluar[$key];
+        $rp->save();
+    }
+}
 return redirect('/')->with('info','Data Karyawan berhasil diubah');
 }
 
@@ -325,8 +364,10 @@ public function destroy($id)
 {
     $karyawans = MdKaryawan::where('nik','=',$id);
     $kerjas = PengalamanKerja::where('nik','=',$id);
+    $rps = RiwayatPendidikan::where('md_karyawan_nik','=',$id);
     $karyawans->delete();
     $kerjas->delete();
+    $rps->delete();
     return redirect('/')->with('info','Data Karyawan berhasil dihapus');
 }
 }
