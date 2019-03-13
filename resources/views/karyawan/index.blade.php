@@ -33,7 +33,7 @@
 						@endif		
 						<td class="center">                              
 							<a href="karyawan/{{$karyawan->nik}}/show"><button class="btn btn-outline btn-info  dim" type="button"><i class="fa fa-user-circle"></i> </button></a>
-							<a href="karyawan/{{$karyawan->nik}}/edit"><button class="btn btn-outline btn-warning dim" type="button"><i class="fa fa-paste"></i> </button></a>
+							<a href="karyawan/{{$karyawan->nik}}/edit"><button class="btn btn-outline btn-warning dim" type="button"><i class="fa fa-pencil"></i> </button></a>
 							<a href="karyawan/{{$karyawan->nik}}/delete"><button class="btn btn-outline btn-danger  dim" type="button"><i class="fa fa-trash"></i> </button></a>
 						</td>
 					</tr>

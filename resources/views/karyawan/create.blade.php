@@ -391,7 +391,7 @@
 	});
 
 	$('#add2').click(function(){
-		$('#addmore2').append('<div class="row"><label class="col-sm-2 control-label"></label><div class="col-sm-3"><select class="form-control m-b" name="st_pendidikan_kode[]"><option value="">Pilih Pendidikan</option>@foreach($pendidikans as $pendidikan)<option value="{{ $pendidikan->kode }}">{{$pendidikan->deskripsi}}</option>@endforeach</select></div><div class="col-sm-3"><select class="form-control m-b" name="st_perguruantinggi_kode[]"><option value="">Pilih Perguruan Tinggi</option>@foreach($pts as $pt)<option value="{{ $pt->kode }}">{{$pt->deskripsi}}</option>@endforeach</select></div><div class="col-sm-2"><input type="text" class="form-control" name="thn_masuk[]" placeholder="Tahun Masuk"></div><div class="col-sm-2"><input type="text" class="form-control" name="thn_keluar[]" placeholder="Tahun Keluar"></div></div>');
+		$('#addmore2').append('<div class="row"><label class="col-sm-2 control-label"></label><div class="col-sm-3"><select class="form-control m-b" name="st_pendidikan_kode[]"><option value="">Pilih Pendidikan</option>@foreach($pendidikans as $pendidikan)<option value="{{ $pendidikan->kode }}">{{$pendidikan->deskripsi}}</option>@endforeach</select></div><div class="col-sm-3"><select class="form-control m-b" name="st_perguruantinggi_kode[]"><option value="">Pilih Perguruan Tinggi</option>@foreach($pts as $pt)<option value="{{ $pt->kode }}">{{$pt->deskripsi}}</option>@endforeach</select></div><div class="col-sm-2"><input type="number" class="form-control" name="thn_masuk[]" placeholder="Tahun Masuk"></div><div class="col-sm-2"><input type="number" class="form-control" name="thn_keluar[]" placeholder="Tahun Keluar"></div></div>');
 	});
 </script>
 @endsection

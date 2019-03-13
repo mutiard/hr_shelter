@@ -138,11 +138,7 @@
 								<dt>Nomor SIM 2:</dt> <dd>{{ $karyawan->no_sim_2 }}</dd><br>
 								<dt>PRD Gaji:</dt> <dd>{{ $karyawan->prd_gaji }}</dd><br>
 								<dt>Kota Asal:</dt> <dd>{{ $karyawan->kota_asal }}</dd><br>
-								@if($karyawan->pendidikan != NULL)	
-								<dt>Pendidikan Terakhir:</dt> <dd>{{ $karyawan->StPendidikan->deskripsi }}</dd><br>
-								@else
-								<dt>Pendidikan Terakhir:</dt> <dd></dd><br>
-								@endif
+								<dt>Pendidikan Terakhir:</dt> <dd>{{ $karyawan->pendidikan }}</dd><br>
 								<dt>Tinggi Badan:</dt> <dd>{{ $karyawan->tinggi_badan }}</dd><br>
 								<dt>Berat Badan:</dt> <dd>{{ $karyawan->berat_badan }}</dd><br>
 								<dt>Ukuran Baju:</dt> <dd>{{ $karyawan->ukuran_baju }}</dd><br>
