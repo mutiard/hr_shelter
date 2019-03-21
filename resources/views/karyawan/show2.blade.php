@@ -10,12 +10,12 @@
 					@if($karyawan->path_foto != NULL)
 					<img alt="image" class="img-circle m-t-xs img-responsive" src="{{asset('/fotoprofil/'.$karyawan->path_foto)}}">
 					@else
-					<br>
+					<img alt="image" class="img-circle m-t-xs img-responsive" src="{{asset('/fotoprofil/admin.jpg')}}" style="width: 150px">
 					@endif
 					@if($karyawan->jabatan != NULL)
 					<div class="m-t-xs font-bold">{{ $karyawan->StJabatan->Deskripsi }}</div>
 					@else
-					<img alt="image" class="img-circle m-t-xs img-responsive" src="{{asset('/fotoprofil/admin.jpg')}}" style="width: 150px">
+					<br>
 					@endif
 				</div>
 			</div>
@@ -27,6 +27,11 @@
 					<small><i class="fa fa-female"></i></small>
 					@endif
 				</h2>
+				@if($karyawan->status_kerja=='1')
+				<small class="label label-primary" style="margin-top: 5px">Aktif</small>
+				@elseif($karyawan->status_kerja=='0')
+				<small class="label label-danger" style="margin-top: 5px">Tidak Aktif</small>
+				@endif
 				<p></p>
 				<div class="col-sm-5">
 					<p><i class="fa fa-map-marker"></i>&ensp;{{$karyawan->alamat_tinggal}}</p>
@@ -37,10 +42,10 @@
 					<p><i class="fa fa-phone"></i>&ensp;{{$karyawan->no_telp}}</p>
 					<p><i class="fa fa-mobile-phone"></i>&ensp;{{$karyawan->no_hp1}}</p>
 					<div class="col-sm-offset-5">
-					<a href="/">
-						<button type="button" class="btn btn-white">Kembali</button>
-					</a>
-				</div>
+						<a href="/">
+							<button type="button" class="btn btn-white">Kembali</button>
+						</a>
+					</div>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -157,10 +162,10 @@
 								<dt>Unit Bisnis:</dt> <dd></dd><br>
 								@endif
 								<dt>Nomor Jaminan<br>Kesehatan Lain:</dt> <dd>{{ $karyawan->no_jamkes_lain }}</dd><br>
-								<dt>ID Pot BPJS Sehat:</dt> <dd>{{ $karyawan->id_pot_bpjs_sehat }}</dd><br>
-								<dt>ID Pot BPJS Pensiun:</dt> <dd>{{ $karyawan->id_pot_bpjs_pensiun }}</dd><br>
-								<dt>ID Pot BPJS Naker:</dt> <dd>{{ $karyawan->id_pot_bpjs_naker }}</dd><br>
-								<dt>ID KTP Seumur Hidup:</dt> <dd>{{ $karyawan->id_ktp_seumur_hidup }}</dd><br>
+								<dt>ID Pot BPJS Sehat:</dt> <dd>{{ $karyawan->id_pot_bpjs_sehat == '1' ? 'Ya' : 'Tidak' }}</dd><br>
+								<dt>ID Pot BPJS Pensiun:</dt> <dd>{{ $karyawan->id_pot_bpjs_pensiun == '1' ? 'Ya' : 'Tidak' }}</dd><br>
+								<dt>ID Pot BPJS Naker:</dt> <dd>{{ $karyawan->id_pot_bpjs_naker == '1' ? 'Ya' : 'Tidak' }}</dd><br>
+								<dt>ID KTP Seumur Hidup:</dt> <dd>{{ $karyawan->id_ktp_seumur_hidup == '1' ? 'Ya' : 'Tidak' }}</dd><br>
 								@if($karyawan->kode_golongan != NULL)
 								<dt>Status Golongan:</dt> <dd>{{ $karyawan->StGolongan->deskripsi }}</dd><br>
 								@else

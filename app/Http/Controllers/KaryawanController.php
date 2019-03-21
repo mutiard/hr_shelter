@@ -70,6 +70,8 @@ class KaryawanController extends Controller
             'id_pot_bpjs_pensiun'=>'required',
             'id_ktp_seumurhidup'=>'required',
             'id_pot_bpjs_naker'=>'required',
+            'nama_prshaan.*'=>'required',
+            'st_pendidikan_kode.*'=>'required'
             // 'path_foto' => 'required|mimes:jpg,jpeg,png'
         ]);
         $karyawans->nik = $request->input('nik');
@@ -161,6 +163,9 @@ class KaryawanController extends Controller
         $edate = Input::get('edate');
         foreach($nama_prshaan as $key => $value){
             $pengalaman = New PengalamanKerja();
+            $this->validate($request,[
+                'nama_prshaan'=>'required'
+            ]);
             $pengalaman->nik = $karyawans->nik;
             $pengalaman->nama_prshaan = $nama_prshaan[$key];
             $pengalaman->jabatan = $jbtn[$key];
@@ -175,6 +180,9 @@ class KaryawanController extends Controller
         $thn_keluar = Input::get('thn_keluar');
         foreach($st_pendidikan_kode as $key => $value){
             $rp = New RiwayatPendidikan();
+            $this->validate($request,[
+                'st_pendidikan_kode'=>'required'
+            ]);
             $rp->md_karyawan_nik = $karyawans->nik;
             $rp->st_pendidikan_kode = $st_pendidikan_kode[$key];
             $rp->st_perguruantinggi_kode = $st_perguruantinggi_kode[$key];
@@ -247,7 +255,9 @@ class KaryawanController extends Controller
             'id_pot_bpjs_sehat'=>'required',
             'id_pot_bpjs_pensiun'=>'required',
             'id_ktp_seumurhidup'=>'required',
-            'id_pot_bpjs_naker'=>'required'
+            'id_pot_bpjs_naker'=>'required',
+            'nama_prshaan.*'=>'required',
+            'st_pendidikan_kode.*'=>'required'
         ]);
         $karyawans=array(
             'nik'=>$request->input('nik'),
@@ -360,14 +370,23 @@ if(isset($st_pendidikan_kode)){
 return redirect('/')->with('info','Data Karyawan berhasil diubah');
 }
 
-public function destroy($id)
+public function statusActive(Request $request, $id) 
 {
-    $karyawans = MdKaryawan::where('nik','=',$id);
-    $kerjas = PengalamanKerja::where('nik','=',$id);
-    $rps = RiwayatPendidikan::where('md_karyawan_nik','=',$id);
-    $karyawans->delete();
-    $kerjas->delete();
-    $rps->delete();
-    return redirect('/')->with('info','Data Karyawan berhasil dihapus');
+    $karyawan=array(
+        'status_kerja'=>1
+    );
+    MdKaryawan::where('nik',$id)->update($karyawan);
+
+    return redirect('/')->with('active','Status Kerja Telah Diaktifkan!');
+}
+
+public function statusNotActive(Request $request, $id) 
+{
+    $karyawan=array(
+        'status_kerja'=>0
+    );
+    MdKaryawan::where('nik',$id)->update($karyawan);
+
+    return redirect('/')->with('notactive','Status Kerja Telah Dinon-aktifkan!');
 }
 }

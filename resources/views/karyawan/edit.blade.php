@@ -30,11 +30,11 @@
 				<div class="form-group"><label class="col-sm-2 control-label">Nama<span style="color: red">*</span></label>
 					<div class="col-sm-10"><input type="text" class="form-control" name="nama" value="{{ $karyawan->nama }}"></div>
 				</div>
-				<div class="form-group"><label class="col-sm-2 control-label">Tempat Lahir<span style="color: red">*</span></label>
-					<div class="col-sm-10"><input type="text" class="form-control" name="tempat_lahir" value="{{ $karyawan->tempat_lahir }}"></div>
-				</div>
-				<div class="form-group"><label class="col-sm-2 control-label">Tanggal Lahir<span style="color: red">*</span></label>
-					<div class="col-sm-10"><input type="date" class="form-control" name="tgl_lahir" value="{{ $karyawan->tgl_lahir }}"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Tempat Lahir<span style="color: red">*</span></label>
+					<div class="col-sm-4"><input type="text" class="form-control" name="tempat_lahir" value="{{ $karyawan->tempat_lahir }}"></div>
+					<label class="col-sm-2 control-label">Tanggal Lahir<span style="color: red">*</span></label>
+					<div class="col-sm-4"><input type="date" class="form-control" name="tgl_lahir" value="{{ $karyawan->tgl_lahir }}"></div>
 				</div>
 				<div class="form-group"><label class="col-sm-2 control-label">Jenis Kelamin<span style="color: red">*</span></label>
 					<div class="col-sm-10"><select class="form-control m-b" name="jenis_klmn">
@@ -74,11 +74,11 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">Alamat Asal</label>
-		<div class="col-sm-10"><input type="text" class="form-control" name="alamat_asal" value="{{ $karyawan->alamat_asal }}" placeholder="Masukkan Alamat Asal"></div>
-	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">Alamat Tinggal</label>
-		<div class="col-sm-10"><input type="text" class="form-control" name="alamat_tinggal" value="{{ $karyawan->alamat_tinggal }}" placeholder="Masukkan Alamat Tinggal"></div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Alamat Asal</label>
+		<div class="col-sm-4"><input type="text" class="form-control" name="alamat_asal" value="{{ $karyawan->alamat_asal }}" placeholder="Masukkan Alamat Asal"></div>
+		<label class="col-sm-2 control-label">Alamat Tinggal</label>
+		<div class="col-sm-4"><input type="text" class="form-control" name="alamat_tinggal" value="{{ $karyawan->alamat_tinggal }}" placeholder="Masukkan Alamat Tinggal"></div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Status Kawin</label>
 		<div class="col-sm-10"><select class="form-control m-b" name="status_kwn">
@@ -93,11 +93,11 @@
 		</select>
 	</div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Kota Asal</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="kota_asal" value="{{ $karyawan->kota_asal }}" placeholder="Masukkan Kota Asal"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Kota Tinggal</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="kota_tinggal" value="{{ $karyawan->kota_tinggal }}" placeholder="Masukkan Kota Tinggal"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Kota Asal</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="kota_asal" value="{{ $karyawan->kota_asal }}" placeholder="Masukkan Kota Asal"></div>
+	<label class="col-sm-2 control-label">Kota Tinggal</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="kota_tinggal" value="{{ $karyawan->kota_tinggal }}" placeholder="Masukkan Kota Tinggal"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">PTKP</label>
 	<div class="col-sm-10"><input type="text" class="form-control" name="ptkp" value="{{ $karyawan->ptkp }}" placeholder="Masukkan PTKP"></div>
@@ -160,14 +160,13 @@
 <div class="form-group"><label class="col-sm-2 control-label">Gaji Pokok</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="gaji_pokok" value="{{ $karyawan->gaji_pokok }}" placeholder="Masukkan Gaji Pokok"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Nomor Telepon</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="no_telp" value="{{ $karyawan->no_telp }}" placeholder="Masukkan Nomor Telepon"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Nomor HP 1</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="no_hp1" value="{{ $karyawan->no_hp1 }}" placeholder="Masukkan Nomor HP 1"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Nomor HP 2</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="no_hp2" value="{{ $karyawan->no_hp2 }}" placeholder="Masukkan Nomor HP 2"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Nomor Telepon</label>
+	<div class="col-sm-2"><input type="number" class="form-control" name="no_telp" value="{{ $karyawan->no_telp }}" placeholder="Nomor Telepon"></div>
+	<label class="col-sm-2 control-label">Nomor HP 1</label>
+	<div class="col-sm-2"><input type="number" class="form-control" name="no_hp1" value="{{ $karyawan->no_hp1 }}" placeholder="Nomor HP 1"></div>
+	<label class="col-sm-2 control-label">Nomor HP 2</label>
+	<div class="col-sm-2"><input type="number" class="form-control" name="no_hp2" value="{{ $karyawan->no_hp2 }}" placeholder="Nomor HP 2"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Staff</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="id_staff">
@@ -224,19 +223,18 @@
 	<div class="col-sm-10"><input type="number" class="form-control" name="no_ktp" value="{{ $karyawan->no_ktp }}" placeholder="Masukkan Nomor KTP"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Nama Bank</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="nama_bank" value="{{ $karyawan->nama_bank }}" placeholder="Masukkan Nama Bank"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Nomor Rekening</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="no_rekening" value="{{ $karyawan->no_rekening }}" placeholder="Masukkan Nomor Rekening"></div>
+	<div class="col-sm-4"><input type="text" class="form-control" name="nama_bank" value="{{ $karyawan->nama_bank }}" placeholder="Masukkan Nama Bank"></div>
+	<label class="col-sm-2 control-label">Nomor Rekening</label>
+	<div class="col-sm-4"><input type="number" class="form-control" name="no_rekening" value="{{ $karyawan->no_rekening }}" placeholder="Masukkan Nomor Rekening"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">NPWP</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="npwp" value="{{ $karyawan->npwp }}" placeholder="Masukkan NPWP"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Kpos Asal</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="kpos_asal" value="{{ $karyawan->kpos_asal }}" placeholder="Masukkan Kpos Asal"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Kpos Tinggal</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="kpos_tinggal" value="{{ $karyawan->kpos_tinggal }}" placeholder="Masukkan Kpos Tinggal"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Kpos Asal</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="kpos_asal" value="{{ $karyawan->kpos_asal }}" placeholder="Masukkan Kpos Asal"></div>
+	<label class="col-sm-2 control-label">Kpos Tinggal</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="kpos_tinggal" value="{{ $karyawan->kpos_tinggal }}" placeholder="Masukkan Kpos Tinggal"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Nama Ibu Kandung</label>
 	<div class="col-sm-10"><input type="text" class="form-control" name="nama_ibu_kandung" value="{{ $karyawan->nama_ibu_kandung }}" placeholder="Masukkan Nama Ibu Kandung"></div>
@@ -254,17 +252,17 @@
 	</select>
 </div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Tipe SIM 1</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="tipe_sim_1" value="{{ $karyawan->tipe_sim_1 }}" placeholder="Masukkan Tipe SIM 1"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Tipe SIM 1</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="tipe_sim_1" value="{{ $karyawan->tipe_sim_1 }}" placeholder="Masukkan Tipe SIM 1"></div>
+	<label class="col-sm-2 control-label">Nomor SIM 1</label>
+	<div class="col-sm-4"><input type="number" class="form-control" name="no_sim_1" value="{{ $karyawan->no_sim_1 }}" placeholder="Masukkan Nomor SIM 1"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Nomor SIM 1</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="no_sim_1" value="{{ $karyawan->no_sim_1 }}" placeholder="Masukkan Nomor SIM 1"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Tipe SIM 2</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="tipe_sim_2" value="{{ $karyawan->tipe_sim_2 }}" placeholder="Masukkan Tipe SIM 2"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Nomor SIM 2</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="no_sim_2" value="{{ $karyawan->no_sim_2 }}" placeholder="Masukkan Nomor SIM 2"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Tipe SIM 2</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="tipe_sim_2" value="{{ $karyawan->tipe_sim_2 }}" placeholder="Masukkan Tipe SIM 2"></div>
+	<label class="col-sm-2 control-label">Nomor SIM 2</label>
+	<div class="col-sm-4"><input type="number" class="form-control" name="no_sim_2" value="{{ $karyawan->no_sim_2 }}" placeholder="Masukkan Nomor SIM 2"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">PRD Gaji</label>
 	<div class="col-sm-10"><input type="text" class="form-control" name="prd_gaji" value="{{ $karyawan->prd_gaji }}" placeholder="Masukkan PRD Gaji"></div>
@@ -272,26 +270,25 @@
 <div class="form-group"><label class="col-sm-2 control-label">Pendidikan Terakhir</label>
 	<div class="col-sm-10"><input type="text" class="form-control" name="pendidikan" value="{{ $karyawan->pendidikan }}" placeholder="Masukkan Pendidikan Terakhir"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Email 1</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="email_1" value="{{ $karyawan->email_1 }}" placeholder="Masukkan Email 1"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Email 1</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="email_1" value="{{ $karyawan->email_1 }}" placeholder="Masukkan Email 1"></div>
+	<label class="col-sm-2 control-label">Email 2</label>
+	<div class="col-sm-4"><input type="text" class="form-control" name="email_2" value="{{ $karyawan->email_2 }}" placeholder="Masukkan Email 2"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Email 2</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="email_2" value="{{ $karyawan->email_2 }}" placeholder="Masukkan Email 2"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Tinggi Badan (cm)</label>
+	<div class="col-sm-4"><input type="number" class="form-control" name="tinggi_badan" value="{{ $karyawan->tinggi_badan }}" placeholder="Masukkan Tinggi Badan"></div>
+	<label class="col-sm-2 control-label">Berat Badan (kg)</label>
+	<div class="col-sm-4"><input type="number" class="form-control" name="berat_badan" value="{{ $karyawan->berat_badan }}" placeholder="Masukkan Berat Badan"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Tinggi Badan (cm)</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="tinggi_badan" value="{{ $karyawan->tinggi_badan }}" placeholder="Masukkan Tinggi Badan"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Berat Badan (kg)</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="berat_badan" value="{{ $karyawan->berat_badan }}" placeholder="Masukkan Berat Badan"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Ukuran Baju</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="ukuran_baju" value="{{ $karyawan->ukuran_baju }}" placeholder="Masukkan Ukuran Baju"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Ukuran Celana</label>
-	<div class="col-sm-10"><input type="text" class="form-control" name="ukuran_celana" value="{{ $karyawan->ukuran_celana }}" placeholder="Masukkan Ukuran Celana"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Ukuran Sepatu</label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="ukuran_sepatu" value="{{ $karyawan->ukuran_sepatu }}" placeholder="Masukkan Ukuran Sepatu"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Ukuran Baju</label>
+	<div class="col-sm-2"><input type="text" class="form-control" name="ukuran_baju" value="{{ $karyawan->ukuran_baju }}" placeholder="Masukkan Ukuran Baju"></div>
+	<label class="col-sm-2 control-label">Ukuran Celana</label>
+	<div class="col-sm-2"><input type="text" class="form-control" name="ukuran_celana" value="{{ $karyawan->ukuran_celana }}" placeholder="Masukkan Ukuran Celana"></div>
+	<label class="col-sm-2 control-label">Ukuran Sepatu</label>
+	<div class="col-sm-2"><input type="number" class="form-control" name="ukuran_sepatu" value="{{ $karyawan->ukuran_sepatu }}" placeholder="Masukkan Ukuran Sepatu"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Nomor Finger</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="no_finger" value="{{ $karyawan->no_finger }}" placeholder="Masukkan Nomor Finger"></div>
@@ -299,11 +296,11 @@
 <div class="form-group"><label class="col-sm-2 control-label">Nomor BPJS Kesehatan</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="no_bpjs_kesehatan" value="{{ $karyawan->no_bpjs_kesehatan }}" placeholder="Masukkan Nomor BPJS Kesehatan"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">Tanggal Masuk Kerja</label>
-	<div class="col-sm-10"><input type="date" class="form-control" name="tgl_masuk_kerja" value="{{ $karyawan->tgl_masuk_kerja }}"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">Tanggal Keluar Kerja</label>
-	<div class="col-sm-10"><input type="date" class="form-control" name="tgl_keluar_kerja" value="{{ $karyawan->tgl_keluar_kerja }}"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">Tanggal Masuk Kerja</label>
+	<div class="col-sm-4"><input type="date" class="form-control" name="tgl_masuk_kerja" value="{{ $karyawan->tgl_masuk_kerja }}"></div>
+	<label class="col-sm-2 control-label">Tanggal Keluar Kerja</label>
+	<div class="col-sm-4"><input type="date" class="form-control" name="tgl_keluar_kerja" value="{{ $karyawan->tgl_keluar_kerja }}"></div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Kode Reg</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="kode_reg" value="{{ $karyawan->kode_reg }}" placeholder="Masukkan Kode Reg"></div>
@@ -327,17 +324,37 @@
 <div class="form-group"><label class="col-sm-2 control-label">Nomor Jaminan Kesehatan Lain</label>
 	<div class="col-sm-10"><input type="number" class="form-control" name="no_jamkes_lain" value="{{ $karyawan->no_jamkes_lain }}" placeholder="Masukkan Nomor Jaminan Kesehatan Lain"></div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">ID POT BPJS Sehat<span style="color: red">*</span></label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="id_pot_bpjs_sehat" value="{{ $karyawan->id_pot_bpjs_sehat }}"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">ID POT BPJS Sehat<span style="color: red">*</span></label>
+	<div class="col-sm-2">
+		<input type="radio" value="1" name="id_pot_bpjs_sehat" {{ $karyawan->id_pot_bpjs_sehat == '1' ? 'checked' : '' }}>Ya
+	</div>
+	<div class="col-sm-2">
+		<input type="radio" value="0" name="id_pot_bpjs_sehat" {{ $karyawan->id_pot_bpjs_sehat == '0' ? 'checked' : '' }}>Tidak
+	</div>
+	<label class="col-sm-2 control-label">ID POT BPJS Pensiun<span style="color: red">*</span></label>
+	<div class="col-sm-2">
+		<input type="radio" value="1" name="id_pot_bpjs_pensiun" {{ $karyawan->id_pot_bpjs_pensiun == '1' ? 'checked' : '' }}>Ya
+	</div>
+	<div class="col-sm-2">
+		<input type="radio" value="0" name="id_pot_bpjs_pensiun" {{ $karyawan->id_pot_bpjs_pensiun == '0' ? 'checked' : '' }}>Tidak
+	</div>
 </div>
-<div class="form-group"><label class="col-sm-2 control-label">ID POT BPJS Pensiun<span style="color: red">*</span></label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="id_pot_bpjs_pensiun" value="{{ $karyawan->id_pot_bpjs_pensiun }}"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">ID POT BPJS Naker<span style="color: red">*</span></label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="id_pot_bpjs_naker" value="{{ $karyawan->id_pot_bpjs_naker }}"></div>
-</div>
-<div class="form-group"><label class="col-sm-2 control-label">ID KTP Seumur Hidup<span style="color: red">*</span></label>
-	<div class="col-sm-10"><input type="number" class="form-control" name="id_ktp_seumurhidup" value="{{ $karyawan->id_ktp_seumurhidup }}"></div>
+<div class="form-group">
+	<label class="col-sm-2 control-label">ID POT BPJS Naker<span style="color: red">*</span></label>
+	<div class="col-sm-2">
+		<input type="radio" value="1" name="id_pot_bpjs_naker" {{ $karyawan->id_pot_bpjs_naker == '1' ? 'checked' : '' }}>Ya
+	</div>
+	<div class="col-sm-2">
+		<input type="radio" value="0" name="id_pot_bpjs_naker" {{ $karyawan->id_pot_bpjs_naker == '0' ? 'checked' : '' }}>Tidak
+	</div>
+	<label class="col-sm-2 control-label">ID KTP Seumur Hidup<span style="color: red">*</span></label>
+	<div class="col-sm-2">
+		<input type="radio" value="1" name="id_ktp_seumurhidup" {{ $karyawan->id_ktp_seumurhidup == '1' ? 'checked' : '' }}>Ya
+	</div>
+	<div class="col-sm-2">
+		<input type="radio" value="0" name="id_ktp_seumurhidup" {{ $karyawan->id_ktp_seumurhidup == '0' ? 'checked' : '' }}>Tidak
+	</div>
 </div>
 <div class="form-group"><label class="col-sm-2 control-label">Status Golongan</label>
 	<div class="col-sm-10"><select class="form-control m-b" name="kode_golongan">

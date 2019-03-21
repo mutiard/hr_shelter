@@ -34,7 +34,21 @@
 						<td class="center">                              
 							<a href="karyawan/{{$karyawan->nik}}/show"><button class="btn btn-outline btn-info  dim" type="button"><i class="fa fa-user-circle"></i> </button></a>
 							<a href="karyawan/{{$karyawan->nik}}/edit"><button class="btn btn-outline btn-warning dim" type="button"><i class="fa fa-pencil"></i> </button></a>
-							<a href="karyawan/{{$karyawan->nik}}/delete"><button class="btn btn-outline btn-danger  dim" type="button"><i class="fa fa-trash"></i> </button></a>
+							@if($karyawan->status_kerja == 1)
+							<a type="button" class="btn btn-sm btn-success disabled">
+								Aktif
+							</a>
+							<a href="karyawan/{{$karyawan->nik}}/nonaktif"  type="button" class="btn btn-sm btn-default">
+								Tidak Aktif
+							</a>
+							@else
+							<a href="karyawan/{{$karyawan->nik}}/aktif" type="button" class="btn btn-sm btn-default">
+								Aktif
+							</a>
+							<a type="button" class="btn btn-sm btn-danger disabled">
+								Tidak Aktif
+							</a>
+							@endif
 						</td>
 					</tr>
 					@endforeach
